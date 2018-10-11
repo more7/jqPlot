@@ -383,6 +383,8 @@
                 else if (this.max != null) {
                     keepMax = true;
                 }
+                //after possible changes of min and/or max above, range has to be recalculated
+                range = max - min;
 
                 // var threshold = 30;
                 // var tdim = Math.max(dim, threshold+1);
