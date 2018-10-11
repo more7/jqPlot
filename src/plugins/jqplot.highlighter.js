@@ -30,6 +30,17 @@
  */
 (function ($) {
     $.jqplot.eventListenerHooks.push(['jqplotMouseMove', handleMove]);
+    
+    //Handling mouse pointer leaving the plot area completely, which is not handled by 'jqplotMouseMove'
+    $.jqplot.eventListenerHooks.push(
+        [
+            'jqplotMouseLeave',
+            function (ev, gridpos, datapos, neighbor, plot) {
+                //empty neghbour makes label disappear (label shown on mouse over)
+                handleMove(ev, gridpos, datapos, null, plot)
+            }
+        ]);
+
 
     /**
      * Class: $.jqplot.Highlighter
